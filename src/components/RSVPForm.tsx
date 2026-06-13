@@ -15,7 +15,7 @@ export const RSVPForm: React.FC = () => {
     setStatus('loading');
 
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbx2B1j8AC3Sa6Xkj17URFH9fVNLtPeWd7sQuViT2-mf48sCSLG9yRt9LYN_9LG4pw8S/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwQWcBugK3wXQFRjCvEJgD0RVb5X50CNujNM2Mbo16hjR1rUd9TIbUxzCGz-6Hxs7w3/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain;charset=utf-8',
