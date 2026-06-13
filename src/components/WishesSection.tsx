@@ -30,8 +30,17 @@ export const WishesSection: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      // Simulate network request latency
-      await new Promise(resolve => setTimeout(resolve, 800));
+      const response = await fetch('https://script.google.com/macros/s/AKfycbx2B1j8AC3Sa6Xkj17URFH9fVNLtPeWd7sQuViT2-mf48sCSLG9yRt9LYN_9LG4pw8S/exec', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify({
+          sheet: 'WISH',
+          name: formData.name,
+          message: formData.message,
+        }),
+      });
 
       const newWish: Wish = {
         id: Date.now().toString(),

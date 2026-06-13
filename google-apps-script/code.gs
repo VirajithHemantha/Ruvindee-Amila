@@ -1,26 +1,29 @@
-const SPREADSHEET_ID = '1jMa12xeTFbfdR5s3NAnYyQT8izPZ-8GAx82X_5i04EE';
+const SPREADSHEET_ID = '1fxMMXXDq2agrcruCRbpk6i6FXGPLDvmF9lCyiGIyLf4';
 
 function doPost(e) {
   try {
+    // Handle preflight options request if necessary
+    if (e.postData === undefined && Object.keys(e.parameter).length === 0) {
+       return jsonResponse_({ ok: true, message: "CORS preflight" });
+    }
+
     const payload = parsePayload_(e);
     const sheetKey = String(payload.sheet || '').toUpperCase();
 
     if (sheetKey !== 'RSVP' && sheetKey !== 'WISH') {
-      return jsonResponse_({ ok: false, error: 'Invalid sheet. Use RSVP or WISH.' });
+      return jsonResponse_({ ok: false, error: 'Invalid sheet. Use sheet="RSVP" or sheet="WISH".' });
     }
 
     const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
     const sheet = getOrCreateSheet_(ss, sheetKey);
 
     if (sheetKey === 'RSVP') {
-      ensureHeaders_(sheet, ['Timestamp', 'Name', 'Phone', 'Guests', 'Attendance', 'DietaryRestrictions']);
+      ensureHeaders_(sheet, ['Timestamp', 'Full Name', 'Guests', 'Dietary Notes']);
       sheet.appendRow([
         new Date(),
-        payload.name || '',
-        payload.phone || payload.email || '',
+        payload.fullName || payload.name || '',
         payload.guests || '',
-        payload.attendance || '',
-        payload.dietaryRestrictions || '',
+        payload.dietaryNotes || '',
       ]);
     } else {
       ensureHeaders_(sheet, ['Timestamp', 'Name', 'Message']);
@@ -50,7 +53,7 @@ function doGet() {
 function parsePayload_(e) {
   const params = e && e.parameter ? e.parameter : {};
 
-  if (Object.keys(params).length > 0) {
+  if (Object.keys(params).length > 0 && !e.postData) {
     return params;
   }
 
@@ -101,6 +104,7 @@ function getOrCreateSheet_(ss, name) {
 function ensureHeaders_(sheet, headers) {
   if (sheet.getLastRow() === 0) {
     sheet.appendRow(headers);
+    sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
   }
 }
 
