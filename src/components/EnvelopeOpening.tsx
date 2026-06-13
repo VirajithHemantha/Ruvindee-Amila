@@ -410,7 +410,7 @@ export function EnvelopeOpening({ onComplete, onMusicStart, guestName }: { onCom
               <div className="text-eyebrow">Promise of Love</div>
 
               {guestName && (
-                <div style={{ fontFamily: '"Alex Brush", cursive', fontSize: '42px', color: '#8f6844', marginTop: '-15px', marginBottom: '5px', zIndex: 2, textAlign: 'center', fontWeight: 'bold', textShadow: '0 1px 2px rgba(201,169,110,0.3)' }}>
+                <div style={{ fontFamily: '"Alex Brush", cursive', fontSize: '32px', color: '#b08968', marginTop: '-15px', marginBottom: '5px', zIndex: 2, textAlign: 'center' }}>
                   For {guestName}
                 </div>
               )}
