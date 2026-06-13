@@ -78,7 +78,7 @@ export const Hero: React.FC<HeroProps> = ({ prefix, guestName }) => {
               {prefix && guestName && (
                 <div className="flex flex-col items-center mb-8">
                   <span className="font-serif text-xl sm:text-2xl text-stone-600 mb-2 italic drop-shadow-sm">We cordially invite</span>
-                  <h3 className="font-display text-4xl sm:text-5xl lg:text-6xl text-brand-beige-deep drop-shadow-md tracking-wide px-4 text-center">
+                  <h3 className="font-display text-4xl sm:text-5xl lg:text-6xl text-brand-beige-deep drop-shadow-md tracking-wide px-4 text-center font-bold">
                     {prefix} {guestName}
                   </h3>
                 </div>
