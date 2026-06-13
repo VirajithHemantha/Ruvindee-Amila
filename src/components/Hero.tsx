@@ -76,9 +76,12 @@ export const Hero: React.FC<HeroProps> = ({ prefix, guestName }) => {
             <div className="hidden sm:block h-[1px] w-20 bg-gradient-to-r from-transparent to-brand-beige-deep/40" />
             <div className="flex flex-col items-center">
               {prefix && guestName && (
-                <h3 className="font-serif text-2xl sm:text-3xl text-brand-beige-deep mb-4 italic">
-                  We cordially invite {prefix} {guestName}
-                </h3>
+                <div className="flex flex-col items-center mb-8">
+                  <span className="font-serif text-xl sm:text-2xl text-stone-600 mb-2 italic drop-shadow-sm">We cordially invite</span>
+                  <h3 className="font-display text-4xl sm:text-5xl lg:text-6xl text-brand-beige-deep drop-shadow-md tracking-wide px-4 text-center">
+                    {prefix} {guestName}
+                  </h3>
+                </div>
               )}
               <p className="text-[1.1rem] sm:text-2xl font-serif italic text-stone-700 tracking-wide px-4 text-center max-w-xl leading-relaxed drop-shadow-[0_2px_4px_rgba(255,255,255,0.5)]">
                 With joyful hearts, we warmly invite you to join us in celebrating our union in marriage as we begin this beautiful new chapter together, surrounded by the blessings of our families and the love of our cherished ones.
