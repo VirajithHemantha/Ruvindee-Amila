@@ -29,7 +29,7 @@ export const CeremonyDetails: React.FC = () => {
               <span className="italic font-light text-brand-beige-deep">Tradition of Love</span>
             </h2>
             <p className="text-stone-500/90 font-serif text-lg sm:text-xl leading-relaxed mb-16 max-w-lg">
-              We are honored to invite you to witness our union as we exchange vows at Cinnamon Life at City of Dreams, surrounded by the grace of God and the warmth of our loved ones.
+              We are honored to invite you to witness our union as we exchange vows at Cinnamon Life at City of Dreams, surrounded by our loved ones.
             </p>
 
             {/* Premium Timeline */}

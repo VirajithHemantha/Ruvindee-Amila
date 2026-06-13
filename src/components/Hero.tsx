@@ -3,7 +3,12 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { Sparkles, Heart } from 'lucide-react';
 import { FloatingPetals } from './FloatingPetals';
 
-export const Hero: React.FC = () => {
+interface HeroProps {
+  prefix?: string;
+  guestName?: string;
+}
+
+export const Hero: React.FC<HeroProps> = ({ prefix, guestName }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 1000], [0, 400]);
@@ -69,9 +74,16 @@ export const Hero: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 sm:mb-16">
             <div className="hidden sm:block h-[1px] w-20 bg-gradient-to-r from-transparent to-brand-beige-deep/40" />
-            <p className="text-[1.1rem] sm:text-2xl font-serif italic text-stone-700 tracking-wide px-4 text-center max-w-xl leading-relaxed drop-shadow-[0_2px_4px_rgba(255,255,255,0.5)]">
-              With joyful hearts, we warmly invite you to join us in celebrating our union in marriage as we begin this beautiful new chapter together, surrounded by the blessings of our families and the love of our cherished ones.
-            </p>
+            <div className="flex flex-col items-center">
+              {prefix && guestName && (
+                <h3 className="font-serif text-2xl sm:text-3xl text-brand-beige-deep mb-4 italic">
+                  We cordially invite {prefix} {guestName}
+                </h3>
+              )}
+              <p className="text-[1.1rem] sm:text-2xl font-serif italic text-stone-700 tracking-wide px-4 text-center max-w-xl leading-relaxed drop-shadow-[0_2px_4px_rgba(255,255,255,0.5)]">
+                With joyful hearts, we warmly invite you to join us in celebrating our union in marriage as we begin this beautiful new chapter together, surrounded by the blessings of our families and the love of our cherished ones.
+              </p>
+            </div>
             <div className="hidden sm:block h-[1px] w-20 bg-gradient-to-l from-transparent to-brand-beige-deep/40" />
           </div>
 

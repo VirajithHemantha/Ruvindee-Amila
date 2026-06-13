@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () => void, onMusicStart?: () => void }) {
+export function EnvelopeOpening({ onComplete, onMusicStart, guestName }: { onComplete: () => void, onMusicStart?: () => void, guestName?: string }) {
   const [opened, setOpened] = useState(false);
 
   useEffect(() => {
@@ -408,6 +408,12 @@ export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () =
               </svg>
 
               <div className="text-eyebrow">Promise of Love</div>
+
+              {guestName && (
+                <div style={{ fontFamily: '"Alex Brush", cursive', fontSize: '32px', color: '#b08968', marginTop: '-15px', marginBottom: '5px', zIndex: 2, textAlign: 'center' }}>
+                  For {guestName}
+                </div>
+              )}
 
               <div className="divider">
                 <div className="divider-line" />

@@ -19,6 +19,11 @@ export default function App() {
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  const searchParams = new URLSearchParams(window.location.search);
+  const prefix = searchParams.get('prefix') || '';
+  const guestName = searchParams.get('name') || '';
+
+
   useEffect(() => {
     audioRef.current = new Audio('/a-thousand-years.mp3');
     audioRef.current.loop = true;
@@ -56,6 +61,7 @@ export default function App() {
       <EnvelopeOpening
         onComplete={() => setShowInvitation(true)}
         onMusicStart={handleMusicStart}
+        guestName={guestName}
       />
     );
   }
@@ -78,7 +84,7 @@ export default function App() {
         {isMusicPlaying ? <Music className="w-5 h-5 sm:w-6 sm:h-6" /> : <VolumeX className="w-5 h-5 sm:w-6 sm:h-6" />}
       </motion.button>
 
-      <Hero />
+      <Hero prefix={prefix} guestName={guestName} />
       
       <div className="py-24 sm:py-32 bg-gradient-to-b from-brand-ivory via-white to-brand-ivory relative">
         <CoupleDetails />
